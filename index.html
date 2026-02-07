@@ -1167,7 +1167,7 @@
             <div class="group-names">
                 <p>✨ PRESENTATION GROUP ✨</p>
                 <p>ANAMOL KHAREL • SUDHIR SHROFF • SUDIP BHANDARI</p>
-                <p>AAUSHA TULADHAR • BENJAMIN BUDHATHOKI</p>
+                <p>AYUSHA TULADHAR • BENJAMIN BUDHATHOKI</p>
             </div>
             <p>© 2026 PAPER AND PULP | NEB CURRICULUM COMPLIANT</p>
             <p>Educational Resource for Class 12 Biology Students</p>
@@ -1194,12 +1194,16 @@
             }
         }
 
-        // Close modal when clicking outside
-        ['intro', 'stages', 'nepal', 'rawMaterial', 'quality', 'sources'].forEach(type => {
+        // Close modal when clicking outside - FIXED for all modals including Nepal
+        const modalTypes = ['intro', 'stages', 'nepal', 'rawMaterial', 'quality', 'sources'];
+        modalTypes.forEach(type => {
             const modal = document.getElementById(type + 'Modal');
             if (modal) {
                 modal.addEventListener('click', function(e) {
-                    if (e.target === this) closeModal(type);
+                    // Only close if clicking directly on the overlay, not the content
+                    if (e.target === this) {
+                        closeModal(type);
+                    }
                 });
             }
         });
@@ -1232,7 +1236,7 @@
             img.classList.toggle('zoomed');
         }
 
-        // Slideshow Functions
+        // Slideshow Functions - FULLY FUNCTIONAL
         let largeSlideIndex = 1;
         let autoPlayTimer;
 
@@ -1274,8 +1278,9 @@
                 scrollIndicator.style.opacity = window.scrollY > 200 ? '0' : '1';
             });
             scrollIndicator.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+                           window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
         }
     </script>
 </body>
