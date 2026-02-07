@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paper and Pulp - Advanced Academy Class 12 Biology. Interactive educational resource with comprehensive topics.">
     <title>PAPER AND PULP | ADVANCE ACADEMY - CLASS 12 BIO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -18,6 +19,7 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -77,19 +79,14 @@
             overflow-y: auto;
             position: relative;
             box-shadow: 0 20px 60px rgba(255, 157, 0, 0.3);
-            animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: slideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             margin: auto;
+            pointer-events: auto;
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(80px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(80px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
@@ -109,6 +106,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin: 0;
         }
 
         .modal-close {
@@ -120,12 +118,18 @@
             background: none;
             border: none;
             padding: 0.5rem;
-            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .modal-close:hover {
             transform: rotate(90deg);
             color: #ef4444;
+            background: rgba(255, 157, 0, 0.1);
         }
 
         .intro-content {
@@ -151,6 +155,7 @@
             font-size: clamp(13px, 2vw, 15px);
             line-height: 1.7;
             font-weight: 500;
+            margin: 0;
         }
 
         .stages-grid {
@@ -214,6 +219,7 @@
             margin-bottom: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            margin-top: 0;
         }
 
         .stage-description {
@@ -222,6 +228,7 @@
             line-height: 1.5;
             position: relative;
             z-index: 1;
+            margin: 0;
         }
 
         .content-card {
@@ -250,6 +257,7 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            margin-top: 0;
         }
 
         .content-card-heading::before {
@@ -268,6 +276,7 @@
             line-height: 1.7;
             font-weight: 500;
             margin-bottom: 1rem;
+            margin-top: 0;
         }
 
         .content-image-grid {
@@ -343,7 +352,8 @@
             background: #0a0a0a;
             border-radius: 20px;
             overflow: hidden;
-            animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: slideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: auto;
         }
 
         .image-zoom-img {
@@ -383,6 +393,7 @@
         .zoom-close:hover {
             transform: rotate(90deg);
             background: #ff6b00;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
         }
 
         .video-link {
@@ -499,13 +510,8 @@
             transform: translateY(-50%) scale(1.15);
         }
 
-        .large-slide-arrow.prev {
-            left: 15px;
-        }
-
-        .large-slide-arrow.next {
-            right: 15px;
-        }
+        .large-slide-arrow.prev { left: 15px; }
+        .large-slide-arrow.next { right: 15px; }
 
         .sketch-img-container {
             width: 60px;
@@ -524,9 +530,7 @@
             transition: transform 0.3s ease;
         }
 
-        .sketch-img-container:hover {
-            transform: scale(1.1);
-        }
+        .sketch-img-container:hover { transform: scale(1.1); }
 
         .sketch-img {
             width: 100%;
@@ -602,6 +606,7 @@
         .main-header {
             margin-bottom: 2rem;
             position: relative;
+            text-align: center;
         }
 
         .main-title {
@@ -628,6 +633,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             font-weight: 600;
+            margin: 0;
         }
 
         .card-grid {
@@ -645,6 +651,9 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .asset-card::before {
@@ -658,6 +667,7 @@
             opacity: 0;
             transition: opacity 0.4s;
             z-index: 0;
+            pointer-events: none;
         }
 
         .asset-card:hover {
@@ -666,15 +676,14 @@
             box-shadow: 0 20px 40px rgba(255, 157, 0, 0.2);
         }
 
-        .asset-card:hover::before {
-            opacity: 1;
-        }
+        .asset-card:hover::before { opacity: 1; }
 
         .card-image {
             height: 200px;
             overflow: hidden;
             position: relative;
             background: #0a0a0a;
+            flex-shrink: 0;
         }
 
         .card-image img {
@@ -685,14 +694,15 @@
             cursor: pointer;
         }
 
-        .asset-card:hover .card-image img {
-            transform: scale(1.1);
-        }
+        .asset-card:hover .card-image img { transform: scale(1.1); }
 
         .card-content {
             padding: 1.2rem;
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .tag {
@@ -706,6 +716,7 @@
             border-radius: 6px;
             margin-bottom: 0.8rem;
             box-shadow: 0 2px 8px rgba(255, 157, 0, 0.3);
+            width: fit-content;
         }
 
         .card-title {
@@ -713,12 +724,14 @@
             font-weight: 700;
             margin-bottom: 0.6rem;
             color: #fff;
+            margin-top: 0;
         }
 
         .card-description {
             color: #888;
             font-size: clamp(12px, 2vw, 13px);
             line-height: 1.5;
+            margin: 0;
         }
 
         .image-placeholder {
@@ -776,6 +789,7 @@
             font-weight: 700;
             margin-bottom: 1.2rem;
             color: #ff9d00;
+            margin-top: 0;
         }
 
         .fact-item {
@@ -786,9 +800,7 @@
             border-radius: 8px;
         }
 
-        .fact-item:last-child {
-            margin-bottom: 0;
-        }
+        .fact-item:last-child { margin-bottom: 0; }
 
         .fact-label {
             color: #ff9d00;
@@ -809,9 +821,7 @@
             letter-spacing: 0.05em;
         }
 
-        .group-names p {
-            margin: 0.2rem 0;
-        }
+        .group-names p { margin: 0.2rem 0; }
 
         footer {
             margin-top: 2rem;
@@ -823,10 +833,8 @@
             letter-spacing: 0.1em;
         }
 
-        footer p:last-child {
-            margin-top: 0.3rem;
-            opacity: 0.5;
-        }
+        footer p { margin: 0.3rem 0; }
+        footer p:last-child { opacity: 0.5; }
 
         .scroll-indicator {
             position: fixed;
@@ -857,12 +865,56 @@
             font-size: 24px;
             font-weight: 700;
         }
+
+        .scroll-indicator.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff9d00;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff6b00;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95%;
+                padding: 1.5rem;
+            }
+            .card-grid { grid-template-columns: 1fr; }
+            .sketch-sidebar { height: 250px; }
+            .main-content { padding: 1.5rem 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                max-width: 100%;
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            .modal-header { flex-direction: column; align-items: flex-start; }
+            .stages-grid { grid-template-columns: 1fr; }
+            .large-slide-arrow { width: 40px; height: 40px; font-size: 18px; }
+            .sketch-sidebar { height: 200px; }
+        }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
 
-    <!-- Introduction Modal -->
+    <!-- ALL MODALS -->
     <div class="modal-overlay" id="introModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -886,17 +938,16 @@
         </div>
     </div>
 
-    <!-- Raw Material Modal -->
     <div class="modal-overlay" id="rawMaterialModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Raw Material for the Paper</h2>
+                <h2 class="modal-title">Raw Material for Paper</h2>
                 <button class="modal-close" onclick="closeModal('rawMaterial')">✕</button>
             </div>
             <div>
                 <div class="content-card">
                     <div class="content-card-heading">📋 Overview</div>
-                    <div class="content-card-text">The raw materials for papermaking contain synthetic, mineral or plant fibres. Pulp is the basic and most important raw material for paper, mixed with chemicals to enhance brightness and stability.</div>
+                    <div class="content-card-text">The raw materials for papermaking contain synthetic, mineral or plant fibres. Pulp is the basic and most important raw material for paper.</div>
                 </div>
                 <div class="content-card">
                     <div class="content-card-heading">🌲 Wood Pulp</div>
@@ -928,24 +979,11 @@
                             <img src="https://excited-amethyst-swktpo0avs.edgeone.app/IMG-20260207-WA0002.jpg" alt="Bamboo">
                         </div>
                     </div>
-                    <div class="bullet-text">🍬 Sugarcane Bagasse</div>
-                    <div class="content-image-grid">
-                        <div class="content-image-item" onclick="openImageZoom('https://stupid-indigo-getu7kyk7i.edgeone.app/IMG-20260207-WA0003.jpg')">
-                            <img src="https://stupid-indigo-getu7kyk7i.edgeone.app/IMG-20260207-WA0003.jpg" alt="Sugarcane">
-                        </div>
-                    </div>
-                    <div class="bullet-text">🌱 Grasses & Waste</div>
-                    <div class="content-image-grid">
-                        <div class="content-image-item" onclick="openImageZoom('https://social-indigo-x22b5gj082.edgeone.app/IMG-20260207-WA0004.jpg')">
-                            <img src="https://social-indigo-x22b5gj082.edgeone.app/IMG-20260207-WA0004.jpg" alt="Grass">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Sources Modal (Topic 3) -->
     <div class="modal-overlay" id="sourcesModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -958,57 +996,24 @@
                     <div class="content-card-text">Essential chemicals used to separate cellulose fibers from lignin during the pulping process.</div>
                     <div class="bullet-text"><strong>Sodium hydroxide (NaOH)</strong> - Primary delignification agent</div>
                     <div class="bullet-text"><strong>Sodium sulphide (Na₂S)</strong> - Activates alkaline pulping process</div>
-                    <div class="bullet-text"><strong>Sodium sulphite (Na₂SO₃)</strong> - Used in sulfite pulping method</div>
                 </div>
                 <div class="content-card">
                     <div class="content-card-heading">📏 Sizing Materials</div>
                     <div class="content-card-text">Sizing controls the paper's absorbency and surface properties for better print quality.</div>
-                    <div class="subheading">Method of Sizing:</div>
-                    <div class="bullet-text"><strong>Internal sizing:</strong> Applied during pulp formation to control absorbency throughout the sheet</div>
-                    <div class="bullet-text"><strong>Surface sizing:</strong> Applied to the paper surface after sheet formation for improved smoothness</div>
-                    <div class="subheading">Common Sizing Agents:</div>
-                    <div class="bullet-text"><strong>Starch:</strong> Improves surface strength, reduces linting, and controls ink holdout</div>
-                    <div class="bullet-text"><strong>Gelatine:</strong> Provides strength, surface hardness, and sizing properties</div>
-                    <div class="bullet-text"><strong>Rosin-Alum:</strong> Traditional sizing agent used in historical paper production</div>
+                    <div class="bullet-text"><strong>Internal sizing:</strong> Applied during pulp formation</div>
+                    <div class="bullet-text"><strong>Surface sizing:</strong> Applied to paper surface after sheet formation</div>
                 </div>
                 <div class="content-card">
                     <div class="content-card-heading">🧩 Filler Materials</div>
-                    <div class="content-card-text">Inorganic, nonfibrous materials used in paper pulp prior to papermaking to improve paper properties.</div>
-                    <div class="bullet-text"><strong>GCC (Ground Calcium Carbonate):</strong> Most commonly used, improves smoothness and brightness</div>
+                    <div class="content-card-text">Inorganic materials used in paper pulp to improve paper properties.</div>
+                    <div class="bullet-text"><strong>GCC:</strong> Ground Calcium Carbonate - improves smoothness</div>
                     <div class="bullet-text"><strong>Kaolin:</strong> Clay-based filler for better printability</div>
-                    <div class="bullet-text"><strong>PPC (Precipitated Calcium Carbonate):</strong> High-quality filler with uniform particle size</div>
-                    <div class="bullet-text"><strong>TiO₂ (Titanium Dioxide):</strong> Provides excellent brightness and opacity</div>
-                    <div class="bullet-text"><strong>MgCO₃ (Magnesium Carbonate):</strong> Specifically used in cigarette paper</div>
-                </div>
-                <div class="content-card">
-                    <div class="content-card-heading">🎨 Pigments & Colouring Agents</div>
-                    <div class="content-card-text">Used to achieve desired colors and improve visual properties of paper products.</div>
-                    <div class="bullet-text"><strong>Soluble pigments:</strong> Directly color the paper pulp</div>
-                    <div class="bullet-text"><strong>Bleaches:</strong> Enhance brightness and whiteness</div>
-                    <div class="bullet-text"><strong>Dyes:</strong> Provide vibrant colors to specialty papers</div>
-                    <div class="subheading">Common Bleaching Agents:</div>
-                    <div class="bullet-text"><strong>NaCl</strong> (Sodium Chloride) • <strong>Na₂SO₄</strong> (Sodium Sulphate) • <strong>Na₂S₂O₃</strong> (Sodium Thiosulphate)</div>
-                    <div class="bullet-text"><strong>H₂O₂</strong> (Hydrogen Peroxide) • <strong>Cl₂</strong> (Chlorine)</div>
-                </div>
-                <div class="content-card">
-                    <div class="content-card-heading">💪 Strength Additives</div>
-                    <div class="content-card-text">Chemical additives that enhance the mechanical strength and durability of paper.</div>
-                    <div class="bullet-text"><strong>Urea (NH₄CONH₂):</strong> Retains the strength of paper during and after production</div>
-                    <div class="bullet-text"><strong>Formaldehyde (CH₂O):</strong> Cross-linking agent for improved strength</div>
-                    <div class="bullet-text"><strong>Cationic starch:</strong> Enhances fiber-to-fiber bonding for dry strength</div>
-                    <div class="bullet-text"><strong>Polyacrylamide:</strong> Provides both wet and dry strength properties</div>
-                </div>
-                <div class="content-card">
-                    <div class="content-card-heading">🔗 Retention Agents</div>
-                    <div class="content-card-text">Additives used to improve the retention rate of fibers and fillers during paper formation.</div>
-                    <div class="bullet-text"><strong>Polyethylenimine:</strong> Positively charged polymer for improved retention</div>
-                    <div class="bullet-text"><strong>Polyacrylamide:</strong> High-performance retention agent for better drainage</div>
+                    <div class="bullet-text"><strong>TiO₂:</strong> Titanium Dioxide - provides brightness</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Quality of Paper Modal -->
     <div class="modal-overlay" id="qualityModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1016,19 +1021,18 @@
                 <button class="modal-close" onclick="closeModal('quality')">✕</button>
             </div>
             <div>
-                <div class="content-card"><div class="content-card-heading">1️⃣ Raw Material Quality</div><div class="content-card-text">High-quality paper starts with good raw materials like clean and strong fibers from wood or bamboo.</div></div>
-                <div class="content-card"><div class="content-card-heading">2️⃣ Pulping Process</div><div class="content-card-text">Fibers are separated from lignin using chemicals like sodium hydroxide (NaOH) and sodium sulfide (Na₂S).</div></div>
-                <div class="content-card"><div class="content-card-heading">3️⃣ Bleaching</div><div class="content-card-text">Bleaching agents like chlorine dioxide or hydrogen peroxide are used to make paper white and bright.</div></div>
-                <div class="content-card"><div class="content-card-heading">4️⃣ Filler Materials</div><div class="content-card-text">Calcium carbonate (CaCO₃) is added to improve smoothness and brightness of the paper.</div></div>
-                <div class="content-card"><div class="content-card-heading">5️⃣ Sizing</div><div class="content-card-text">Chemicals like alum and rosin control the paper's absorbency and make it smoother.</div></div>
-                <div class="content-card"><div class="content-card-heading">6️⃣ Coating</div><div class="content-card-text">A coating layer made from pigments and binders gives the paper a smooth finish and improves print quality.</div></div>
-                <div class="content-card"><div class="content-card-heading">7️⃣ Quality Control</div><div class="content-card-text">Tests for thickness, brightness, and smoothness ensure the paper meets desired standards.</div></div>
-                <div class="content-card"><div class="content-card-heading">8️⃣ Finishing</div><div class="content-card-text">Paper is dried, calendered (pressed between rollers), and cut to desired size for final delivery.</div></div>
+                <div class="content-card"><div class="content-card-heading">1️⃣ Raw Material Quality</div><div class="content-card-text">High-quality paper starts with good raw materials like clean and strong fibers.</div></div>
+                <div class="content-card"><div class="content-card-heading">2️⃣ Pulping Process</div><div class="content-card-text">Fibers are separated from lignin using chemicals like NaOH and Na₂S.</div></div>
+                <div class="content-card"><div class="content-card-heading">3️⃣ Bleaching</div><div class="content-card-text">Bleaching agents make paper white and bright.</div></div>
+                <div class="content-card"><div class="content-card-heading">4️⃣ Filler Materials</div><div class="content-card-text">Calcium carbonate (CaCO₃) improves smoothness and brightness.</div></div>
+                <div class="content-card"><div class="content-card-heading">5️⃣ Sizing</div><div class="content-card-text">Chemicals control the paper's absorbency and smoothness.</div></div>
+                <div class="content-card"><div class="content-card-heading">6️⃣ Coating</div><div class="content-card-text">Coating layer gives the paper a smooth finish and improves print quality.</div></div>
+                <div class="content-card"><div class="content-card-heading">7️⃣ Quality Control</div><div class="content-card-text">Tests for thickness, brightness, and smoothness ensure paper meets standards.</div></div>
+                <div class="content-card"><div class="content-card-heading">8️⃣ Finishing</div><div class="content-card-text">Paper is dried, calendered, and cut to desired size.</div></div>
             </div>
         </div>
     </div>
 
-    <!-- Stages Modal -->
     <div class="modal-overlay" id="stagesModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1036,21 +1040,20 @@
                 <button class="modal-close" onclick="closeModal('stages')">✕</button>
             </div>
             <div class="stages-grid">
-                <div class="stage-card"><div class="stage-number">1</div><div class="stage-title">Raw Materials</div><div class="stage-description">Harvesting and gathering of wood, fibers, and recycled materials.</div></div>
-                <div class="stage-card"><div class="stage-number">2</div><div class="stage-title">Chipping</div><div class="stage-description">Raw wood cut into small chips (10-25mm) for processing.</div></div>
+                <div class="stage-card"><div class="stage-number">1</div><div class="stage-title">Raw Materials</div><div class="stage-description">Harvesting wood, fibers, and recycled materials.</div></div>
+                <div class="stage-card"><div class="stage-number">2</div><div class="stage-title">Chipping</div><div class="stage-description">Raw wood cut into small chips (10-25mm).</div></div>
                 <div class="stage-card"><div class="stage-number">3</div><div class="stage-title">Pulping</div><div class="stage-description">Chemical or mechanical processes separate cellulose fibers.</div></div>
                 <div class="stage-card"><div class="stage-number">4</div><div class="stage-title">Cleaning & Bleaching</div><div class="stage-description">Pulp is washed and bleached for brightness.</div></div>
-                <div class="stage-card"><div class="stage-number">5</div><div class="stage-title">Formation</div><div class="stage-description">Refined pulp is deposited to form wet paper sheet.</div></div>
-                <div class="stage-card"><div class="stage-number">6</div><div class="stage-title">Pressing & Drying</div><div class="stage-description">Wet paper is pressed and heated to remove moisture.</div></div>
+                <div class="stage-card"><div class="stage-number">5</div><div class="stage-title">Formation</div><div class="stage-description">Refined pulp deposited to form wet paper sheet.</div></div>
+                <div class="stage-card"><div class="stage-number">6</div><div class="stage-title">Pressing & Drying</div><div class="stage-description">Wet paper pressed and heated to remove moisture.</div></div>
                 <div class="stage-card"><div class="stage-number">7</div><div class="stage-title">Finishing</div><div class="stage-description">Paper is calendered, cut, and packaged.</div></div>
             </div>
-            <center>
+            <div style="text-align: center;">
                 <a href="https://youtu.be/DjfCpBKZCd4?si=NrQBfOSzBUvFQOqx" target="_blank" class="video-link">▶️ Watch Video</a>
-            </center>
+            </div>
         </div>
     </div>
 
-    <!-- Nepal Modal -->
     <div class="modal-overlay" id="nepalModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1060,7 +1063,7 @@
             <div>
                 <div class="content-card"><div class="content-card-heading">📜 History</div><div class="content-card-text">Nepal's industry started with traditional methods. Traditional papermaking like Lokta paper is still practiced.</div></div>
                 <div class="content-card"><div class="content-card-heading">🏭 Present Day</div><div class="content-card-text">Modern technology combined with traditional craftsmanship creates unique heritage and innovation blend.</div></div>
-                <div class="content-card"><div class="content-card-heading">💰 Economic Role</div><div class="content-card-text">Industry creates jobs, supports farming, and contributes significantly to Nepal's GDP.</div></div>
+                <div class="content-card"><div class="content-card-heading">💰 Economic Role</div><div class="content-card-text">Industry creates jobs, supports farming, and contributes to Nepal's GDP.</div></div>
                 <div class="content-card"><div class="content-card-heading">🔮 Looking Forward</div><div class="content-card-text">Potential for growth through eco-friendly and sustainable practices in paper production.</div></div>
                 <div class="content-card"><div class="content-card-heading">⚡ Challenges & Opportunities</div><div class="content-card-text">Faces environmental challenges but has export opportunities through new technology.</div></div>
             </div>
@@ -1130,12 +1133,12 @@
             </div>
 
             <div class="asset-card" onclick="openModal('stages')">
-                <div class="card-image"><img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-15-7190-9_2/MediaObjects/483825_1_En_2_Fig1_HTML.png" alt="Stages" onclick="event.stopPropagation(); openImageZoom(this.src)"></div>
+                <div class="card-image"><img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-15-7190-9_2/MediaObjects/483825_1_En_2_Fig1_HTML.png" alt="Stages"></div>
                 <div class="card-content"><span class="tag">TOPIC 04</span><h3 class="card-title">Stages</h3><p class="card-description">7 production stages with tutorial.</p></div>
             </div>
 
-            <div class="asset-card">
-                <div class="card-image"><img src="https://integrated-ivory-qntgb33yoa.edgeone.app/IMG-20260206-WA0052.jpg" alt="Flow" onclick="openImageZoom(this.src)"></div>
+            <div class="asset-card" onclick="openImageZoom('https://integrated-ivory-qntgb33yoa.edgeone.app/IMG-20260206-WA0052.jpg')">
+                <div class="card-image"><img src="https://integrated-ivory-qntgb33yoa.edgeone.app/IMG-20260206-WA0052.jpg" alt="Flow"></div>
                 <div class="card-content"><span class="tag">TOPIC 05</span><h3 class="card-title">Flowsheet</h3><p class="card-description">Manufacturing process diagram.</p></div>
             </div>
 
@@ -1145,12 +1148,12 @@
             </div>
 
             <div class="asset-card" onclick="openModal('nepal')">
-                <div class="card-image"><img src="https://assets-api.kathmandupost.com/thumb.php?src=https%3A%2F%2Fassets-cdn.kathmandupost.com%2Fuploads%2Fsource%2Fnews%2F2017%2Fmiscellaneous%2Flocal-returns-to-work-..jpg&w=900&height=601" alt="Nepal" onclick="event.stopPropagation(); openImageZoom(this.src)"></div>
+                <div class="card-image"><img src="https://assets-api.kathmandupost.com/thumb.php?src=https%3A%2F%2Fassets-cdn.kathmandupost.com%2Fuploads%2Fsource%2Fnews%2F2017%2Fmiscellaneous%2Flocal-returns-to-work-..jpg&w=900&height=601" alt="Nepal"></div>
                 <div class="card-content"><span class="tag">TOPIC 07</span><h3 class="card-title">Nepal Industry</h3><p class="card-description">History and future potential.</p></div>
             </div>
 
-            <div class="asset-card">
-                <div class="card-image"><img src="https://horrible-cyan-syiozhtsco.edgeone.app/unnamed.jpg" alt="Q&A" onclick="openImageZoom(this.src)"></div>
+            <div class="asset-card" onclick="openImageZoom('https://horrible-cyan-syiozhtsco.edgeone.app/unnamed.jpg')">
+                <div class="card-image"><img src="https://horrible-cyan-syiozhtsco.edgeone.app/unnamed.jpg" alt="Q&A"></div>
                 <div class="card-content"><span class="tag">TOPIC 08</span><h3 class="card-title">Q&A</h3><p class="card-description">Comprehensive questions and answers.</p></div>
             </div>
         </section>
@@ -1177,7 +1180,10 @@
     <div class="scroll-indicator"></div>
 
     <script>
-        // Modal Functions
+        // ============================================
+        // MODAL MANAGEMENT - FULLY FUNCTIONAL
+        // ============================================
+        
         function openModal(type) {
             const modal = document.getElementById(type + 'Modal');
             if (modal) {
@@ -1194,54 +1200,67 @@
             }
         }
 
-        // Close modal when clicking outside - FIXED for all modals including Nepal
+        // Modal overlay click detection
         const modalTypes = ['intro', 'stages', 'nepal', 'rawMaterial', 'quality', 'sources'];
+        
         modalTypes.forEach(type => {
             const modal = document.getElementById(type + 'Modal');
             if (modal) {
                 modal.addEventListener('click', function(e) {
-                    // Only close if clicking directly on the overlay, not the content
-                    if (e.target === this) {
+                    if (e.target === modal) {
                         closeModal(type);
                     }
                 });
             }
         });
 
-        // Close modals with Escape key
+        // Close all modals with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeModal('intro');
-                closeModal('stages');
-                closeModal('nepal');
-                closeModal('rawMaterial');
-                closeModal('quality');
-                closeModal('sources');
+                modalTypes.forEach(type => closeModal(type));
                 closeImageZoom();
             }
         });
 
-        // Image Zoom Functions
+        // ============================================
+        // IMAGE ZOOM FUNCTIONALITY
+        // ============================================
+        
         function openImageZoom(imageUrl) {
-            document.getElementById('zoomImageDisplay').src = imageUrl;
-            document.getElementById('imageZoomModal').classList.add('active');
+            const zoomModal = document.getElementById('imageZoomModal');
+            const zoomImage = document.getElementById('zoomImageDisplay');
+            zoomImage.src = imageUrl;
+            zoomImage.classList.remove('zoomed');
+            zoomModal.classList.add('active');
         }
 
         function closeImageZoom() {
-            document.getElementById('imageZoomModal').classList.remove('active');
-            document.getElementById('zoomImageDisplay').classList.remove('zoomed');
+            const zoomModal = document.getElementById('imageZoomModal');
+            const zoomImage = document.getElementById('zoomImageDisplay');
+            zoomModal.classList.remove('active');
+            zoomImage.classList.remove('zoomed');
         }
 
         function toggleImageZoom(img) {
             img.classList.toggle('zoomed');
         }
 
-        // Slideshow Functions - FULLY FUNCTIONAL
+        // Close image zoom modal when clicking outside
+        document.getElementById('imageZoomModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageZoom();
+            }
+        });
+
+        // ============================================
+        // SLIDESHOW FUNCTIONALITY - FULLY FIXED
+        // ============================================
+        
         let largeSlideIndex = 1;
-        let autoPlayTimer;
+        let autoPlayTimer = null;
 
         function changeLargeSlide(n) {
-            clearInterval(autoPlayTimer);
+            if (autoPlayTimer) clearInterval(autoPlayTimer);
             largeSlideIndex += n;
             showLargeSlide(largeSlideIndex);
             startAutoPlay();
@@ -1269,18 +1288,22 @@
         }
 
         // Initialize slideshow
-        startAutoPlay();
+        window.addEventListener('load', () => {
+            startAutoPlay();
+        });
 
-        // Scroll Indicator
+        // ============================================
+        // SCROLL INDICATOR
+        // ============================================
+        
         const scrollIndicator = document.querySelector('.scroll-indicator');
         if (scrollIndicator) {
             window.addEventListener('scroll', function() {
-                scrollIndicator.style.opacity = window.scrollY > 200 ? '0' : '1';
+                scrollIndicator.classList.toggle('hide', window.scrollY > 200);
             });
             scrollIndicator.addEventListener('click', function() {
-                           window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
     </script>
 </body>
