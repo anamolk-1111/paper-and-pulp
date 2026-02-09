@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="Paper and Pulp - Advanced Academy Class 12 Biology. Interactive educational resource with comprehensive topics.">
     <title>PAPER AND PULP | ADVANCE ACADEMY - CLASS 12 BIO</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -427,7 +423,7 @@
             justify-content: space-between;
             position: relative;
             z-index: 10;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .large-slideshow-wrapper {
@@ -499,9 +495,10 @@
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             font-weight: 900;
             font-size: 22px;
-            z-index: 30;
+            z-index: 100;
             user-select: none;
             padding: 0;
+            pointer-events: auto;
         }
 
         .large-slide-arrow:hover {
@@ -1070,6 +1067,54 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="pulpingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Pulping Processes</h2>
+                <button class="modal-close" onclick="closeModal('pulping')">✕</button>
+            </div>
+            <div>
+                <div class="content-card">
+                    <div class="content-card-heading">⚙️ Pulping Methods</div>
+                    <div class="content-card-text">Pulping separates cellulose fibers from lignin using two main approaches:</div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-heading">🔨 Mechanical Pulping</div>
+                    <div class="content-card-text">Mechanical energy is used to physically separate fibers without chemicals. Faster but produces lower quality pulp.</div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-heading">🧪 Chemical Pulping</div>
+                    <div class="content-card-text">Chemicals are used to dissolve and separate lignin from cellulose fibers. Produces higher quality pulp suitable for most paper types.</div>
+                    
+                    <div class="subheading">I. Kraft (Sulphate) Process</div>
+                    <div class="bullet-text"><strong>Chemicals used:</strong> Sodium hydroxide (NaOH) + Sodium sulphate (Na₂SO₄)</div>
+                    <div class="bullet-text"><strong>Components:</strong> Non-organic + Organic compounds</div>
+                    <div class="bullet-text"><strong>Temperature:</strong> 170-180°C</div>
+                    <div class="bullet-text"><strong>Yield:</strong> 45-50% (Most commonly used process)</div>
+
+                    <div class="subheading">II. Sulfite Process</div>
+                    <div class="bullet-text"><strong>Chemicals used:</strong> Acetic acid, Calcium & Sodium sulphate (NaHSO₃ + NaOH + H₂O)</div>
+                    <div class="bullet-text"><strong>Application:</strong> Produces pulp for specialty papers</div>
+
+                    <div class="subheading">III. Chemi-Mechanical Pulping</div>
+                    <div class="bullet-text">Combines chemical treatment with mechanical separation for improved fiber properties</div>
+
+                    <div class="subheading">IV. Solvent Pulping</div>
+                    <div class="bullet-text">Uses organic solvents to dissolve lignin, producing high-quality pulp with minimal environmental impact</div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-heading">📊 Process Comparison</div>
+                    <div class="bullet-text"><strong>Kraft Process:</strong> Most versatile, highest yield, industrial standard</div>
+                    <div class="bullet-text"><strong>Sulfite Process:</strong> Specialty applications, good fiber strength</div>
+                    <div class="bullet-text"><strong>Mechanical:</strong> Fast, energy-efficient but lower quality</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Zoom Modal -->
     <div class="image-zoom-modal" id="imageZoomModal">
         <div class="image-zoom-container">
@@ -1093,14 +1138,14 @@
                 <div class="large-slide"><img src="https://capitalist-black-osa6tgc4vn.edgeone.app/IMG-20260206-WA0053.jpg" class="large-slide-image" alt="Slide 9"></div>
                 <div class="large-slide"><img src="https://satisfied-cyan-jmmcwzlsul.edgeone.app/IMG-20260207-WA0005.jpg" class="large-slide-image" alt="Slide 10"></div>
             </div>
-            <button class="large-slide-arrow prev" onclick="changeLargeSlide(-1)">❮</button>
-            <button class="large-slide-arrow next" onclick="changeLargeSlide(1)">❯</button>
+            <button class="large-slide-arrow prev" onclick="prevSlide()">❮</button>
+            <button class="large-slide-arrow next" onclick="nextSlide()">❯</button>
             <div class="sketch-header">
                 <div class="sketch-badge">ADVANCE ACADEMY</div>
                 <div class="sketch-divider"></div>
             </div>
             <div class="sketch-img-container">
-                <img src="https://img.sanishtech.com/u/4ed94bed5ad4caa9cf6947bc0b569133.png" alt="Logo" class="sketch-img">
+                <img src="https://victorious-crimson-sdy0uxhibv.edgeone.app/logo-removebg-preview.png" alt="Logo" class="sketch-img">
             </div>
             <div class="student-credit">
                 <p class="student-credit-label">Drafted By</p>
@@ -1128,7 +1173,7 @@
             </div>
 
             <div class="asset-card" onclick="openModal('sources')">
-                <div class="card-image"><div class="image-placeholder"><span class="placeholder-text">🧪 CHEMICALS</span></div></div>
+                <div class="card-image"><img src="https://sajhanotes.com/wp-content/uploads/2024/01/Paper-Production-flow-sheet-diagram.png" alt="Sources"></div>
                 <div class="card-content"><span class="tag">TOPIC 03</span><h3 class="card-title">Sources & Chemicals</h3><p class="card-description">Pulping chemicals, sizing, fillers, and additives.</p></div>
             </div>
 
@@ -1148,13 +1193,13 @@
             </div>
 
             <div class="asset-card" onclick="openModal('nepal')">
-                <div class="card-image"><img src="https://assets-api.kathmandupost.com/thumb.php?src=https%3A%2F%2Fassets-cdn.kathmandupost.com%2Fuploads%2Fsource%2Fnews%2F2017%2Fmiscellaneous%2Flocal-returns-to-work-..jpg&w=900&height=601" alt="Nepal"></div>
+                <div class="card-image"><img src="https://linguistic-harlequin-kfud8r1r2b.edgeone.app/thumb.jpeg" alt="Nepal"></div>
                 <div class="card-content"><span class="tag">TOPIC 07</span><h3 class="card-title">Nepal Industry</h3><p class="card-description">History and future potential.</p></div>
             </div>
 
-            <div class="asset-card" onclick="openImageZoom('https://horrible-cyan-syiozhtsco.edgeone.app/unnamed.jpg')">
-                <div class="card-image"><img src="https://horrible-cyan-syiozhtsco.edgeone.app/unnamed.jpg" alt="Q&A"></div>
-                <div class="card-content"><span class="tag">TOPIC 08</span><h3 class="card-title">Q&A</h3><p class="card-description">Comprehensive questions and answers.</p></div>
+            <div class="asset-card" onclick="openModal('pulping')">
+                <div class="card-image"><img src="https://explicit-green-udauh3xwhd.edgeone.app/Messenger_creation_1417312186805255.jpeg" alt="Pulping"></div>
+                <div class="card-content"><span class="tag">TOPIC 08</span><h3 class="card-title">Pulping</h3><p class="card-description">Mechanical and chemical pulping methods.</p></div>
             </div>
         </section>
 
@@ -1181,7 +1226,7 @@
 
     <script>
         // ============================================
-        // MODAL MANAGEMENT - FULLY FUNCTIONAL
+        // MODAL MANAGEMENT
         // ============================================
         
         function openModal(type) {
@@ -1200,8 +1245,7 @@
             }
         }
 
-        // Modal overlay click detection
-        const modalTypes = ['intro', 'stages', 'nepal', 'rawMaterial', 'quality', 'sources'];
+        const modalTypes = ['intro', 'stages', 'nepal', 'rawMaterial', 'quality', 'sources', 'pulping'];
         
         modalTypes.forEach(type => {
             const modal = document.getElementById(type + 'Modal');
@@ -1214,7 +1258,6 @@
             }
         });
 
-        // Close all modals with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 modalTypes.forEach(type => closeModal(type));
@@ -1245,7 +1288,6 @@
             img.classList.toggle('zoomed');
         }
 
-        // Close image zoom modal when clicking outside
         document.getElementById('imageZoomModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeImageZoom();
@@ -1253,43 +1295,52 @@
         });
 
         // ============================================
-        // SLIDESHOW FUNCTIONALITY - FULLY FIXED
+        // SLIDESHOW FUNCTIONALITY - SIMPLE & WORKING
         // ============================================
         
-        let largeSlideIndex = 1;
-        let autoPlayTimer = null;
+        let slideIndex = 0;
+        let slideTimer = null;
 
-        function changeLargeSlide(n) {
-            if (autoPlayTimer) clearInterval(autoPlayTimer);
-            largeSlideIndex += n;
-            showLargeSlide(largeSlideIndex);
-            startAutoPlay();
+        function nextSlide() {
+            clearInterval(slideTimer);
+            slideIndex++;
+            displaySlide();
+            autoSlide();
         }
 
-        function showLargeSlide(n) {
-            const slides = document.getElementsByClassName('large-slide');
-            if (n > slides.length) largeSlideIndex = 1;
-            if (n < 1) largeSlideIndex = slides.length;
+        function prevSlide() {
+            clearInterval(slideTimer);
+            slideIndex--;
+            displaySlide();
+            autoSlide();
+        }
+
+        function displaySlide() {
+            const slides = document.querySelectorAll('.large-slide');
+            const totalSlides = slides.length;
             
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            slides[largeSlideIndex - 1].classList.add('active');
+            // Wrap around
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Show current slide
+            slides[slideIndex].classList.add('active');
         }
 
-        function startAutoPlay() {
-            autoPlayTimer = setInterval(() => {
-                largeSlideIndex++;
-                if (largeSlideIndex > document.getElementsByClassName('large-slide').length) {
-                    largeSlideIndex = 1;
-                }
-                showLargeSlide(largeSlideIndex);
+        function autoSlide() {
+            slideTimer = setInterval(() => {
+                slideIndex++;
+                displaySlide();
             }, 4000);
         }
 
-        // Initialize slideshow
+        // Start slideshow when page loads
         window.addEventListener('load', () => {
-            startAutoPlay();
+            displaySlide();
+            autoSlide();
         });
 
         // ============================================
