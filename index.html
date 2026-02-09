@@ -1,4 +1,8 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Paper and Pulp - Advanced Academy Class 12 Biology. Interactive educational resource with comprehensive topics.">
     <title>PAPER AND PULP | ADVANCE ACADEMY - CLASS 12 BIO</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -957,17 +961,42 @@
                 <div class="content-card">
                     <div class="content-card-heading">🌾 Non-Wood Pulp</div>
                     <div class="content-card-text">Sustainable alternatives used where wood is scarce.</div>
-                    <div class="subheading">Sources:</div>
+                    
+                    <div class="subheading">I. Straw or Stalk Fibre</div>
+                    <div class="bullet-text"><strong>Sources:</strong> Reed, bamboo, wheat straw, rice straw, corn stalk, bagasse (sugarcane waste), grass, hemp</div>
+                    <div class="bullet-text"><strong>Fiber Properties:</strong> Short and thin fibers</div>
+                    <div class="bullet-text"><strong>Composition:</strong> Contain lignin, hemicellulose, silica - require cleaning before use</div>
+                    <div class="bullet-text"><strong>Applications:</strong> Cigarette paper, decorative paper, and filter paper</div>
+                    <div class="content-image-grid">
+                        <div class="content-image-item" onclick="openImageZoom('https://independent-azure-zumu7jtrfh.edgeone.app/IMG-20260207-WA0001.jpg')">
+                            <img src="https://independent-azure-zumu7jtrfh.edgeone.app/IMG-20260207-WA0001.jpg" alt="Straw">
+                        </div>
+                    </div>
+
+                    <div class="subheading">II. Bast Fibre</div>
+                    <div class="bullet-text"><strong>Sources:</strong> Flax, jute, kenaf, hemp, cotton stalk bark, sisal, abaca</div>
+                    <div class="bullet-text"><strong>Fiber Properties:</strong> Long, thin, strong, and pure fibers</div>
+                    <div class="bullet-text"><strong>Quality:</strong> Provide better quality and stability to paper</div>
+                    <div class="bullet-text"><strong>Applications:</strong> Art paper, printing paper, writing paper, cigarette paper, security paper</div>
+
+                    <div class="subheading">III. Hull Fibre</div>
+                    <div class="bullet-text"><strong>Sources:</strong> Cotton linters and cotton rags</div>
+                    <div class="bullet-text"><strong>Composition:</strong> Contains very pure cellulose</div>
+                    <div class="bullet-text"><strong>Fiber Properties:</strong> Long, strong, durable, and highly absorbent</div>
+                    <div class="bullet-text"><strong>Applications:</strong> Filter paper, drawing paper, security paper, text paper, waterleaf paper</div>
+
+                    <div class="subheading">IV. Recycled Paper Pulp</div>
+                    <div class="bullet-text"><strong>Source:</strong> Made from waste paper or recycled paper</div>
+                    <div class="bullet-text"><strong>Processing:</strong> Ink removed by deinking process using soap or enzymes</div>
+                    <div class="bullet-text"><strong>Quality:</strong> Mixed with virgin pulp to improve quality</div>
+                    <div class="bullet-text"><strong>Applications:</strong> Printing paper and writing paper</div>
+                    <div class="bullet-text"><strong>⚠️ Not Recyclable:</strong> Wax-coated, plastic-coated, or foil-coated papers</div>
+
+                    <div class="subheading">Other Sources:</div>
                     <div class="bullet-text">🪵 Wood Logs</div>
                     <div class="content-image-grid">
                         <div class="content-image-item" onclick="openImageZoom('https://favourite-lime-wsiaqzswej.edgeone.app/IMG-20260207-WA0000.jpg')">
                             <img src="https://favourite-lime-wsiaqzswej.edgeone.app/IMG-20260207-WA0000.jpg" alt="Wood">
-                        </div>
-                    </div>
-                    <div class="bullet-text">🌾 Wheat & Rice Straw</div>
-                    <div class="content-image-grid">
-                        <div class="content-image-item" onclick="openImageZoom('https://independent-azure-zumu7jtrfh.edgeone.app/IMG-20260207-WA0001.jpg')">
-                            <img src="https://independent-azure-zumu7jtrfh.edgeone.app/IMG-20260207-WA0001.jpg" alt="Straw">
                         </div>
                     </div>
                     <div class="bullet-text">🎋 Bamboo</div>
@@ -1225,6 +1254,26 @@
     <div class="scroll-indicator"></div>
 
     <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable keyboard shortcuts for saving/downloading
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+S / Cmd+S
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+Shift+S / Cmd+Shift+S
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
         // ============================================
         // MODAL MANAGEMENT
         // ============================================
